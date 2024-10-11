@@ -45,31 +45,43 @@ export default function Characters() {
 
   return (
     <section className="bg-[url('/images/index.png')] bg-cover h-[100vh]">
-    <div className="flex items-center justify-between">
-      <img src="/images/logo.png" className="mt-10 ml-5"></img>
-      <input
-        type="text"
-        placeholder="Pesquisar personagens..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o estado com o valor do input
-        className="mt-10 mr-5 border bg-[#BB5346] border-black text-white rounded-full p-2 mb-4 w-3/4 max-w-sm" // Estilos para a barra de pesquisa
+      <div className="flex items-center justify-between">
+  <img src="/images/logo.png" alt="Logo" className="ml-5 mt-10" />
+  
+  <div className="relative w-3/4 max-w-sm mr-5">
+    <input
+      type="text"
+      placeholder="Pesquisar personagens..."
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o estado com o valor do input
+      className="w-full bg-[#BB5346] text-white rounded-full p-2 pl-10 mb-4 focus:outline-none" // Adiciona padding-left para espaço do ícone
     />
-    </div>
-    <h1 className="text-7xl text-white font-bold mt-10 flex justify-center mb-4">ONE API</h1>
-    {/* Mostrar a listagem apenas se houver um termo de pesquisa */}
-    {searchTerm && filteredCharacters.length > 0 ? (
-      <ul className="w-full max-w-md">
-        {filteredCharacters.map((character) => (
-          <li key={character.id} className="border-b p-2 text-white">
-            {character.name} - {character.job}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      searchTerm && <p>Nenhum personagem encontrado.</p> // Mensagem se não encontrar
-    )}
-    <div>
+    <img
+      src="/images/lupa.png"
+      alt="Lupa"
+      className="absolute left-3 top-5 transform -translate-y-1/2 w-5 h-5" // Posiciona o ícone no meio verticalmente
+    />
   </div>
+</div>
+    <h1 style={{ fontFamily: 'Nico Moji' }} className="text-7xl text-white font-bold mt-10 flex justify-center mb-4">ONE API</h1>
+    {/* Mostrar a listagem apenas se houver um termo de pesquisa */}
+    <div className='flex justify-center'>
+    <div className='flex flex-col justify-center h-auto space-y-4 '>
+    {searchTerm && filteredCharacters.length > 0 ? (
+        <div className='space-y-2 max-h-[60vh] overflow-y-scroll custom-scroll'>
+        {filteredCharacters.map((character) => (
+          <div key={character.id} className="bg-white items-center flex justify-between border-b p-2 text-black gap-20">
+            <img src='/images/personas.jpg' className='w-16'></img>
+            <p>{character.name}</p>
+             <p>{character.bounty}</p>
+          </div>
+        ))}
+        </div>
+    ) : (
+      searchTerm && <p style={{ fontFamily: 'Nico Moji' }}className='mt-20 text-white text-3xl'>Nenhum personagem encontrado.</p> 
+      )} 
+      </div>
+      </div>
   </section>
   );
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export default function Characters() {
+export default function Bounties() {
   const [characters, setCharacters] = useState([])
   const [loading, setLoading] = useState(true)
   const selectedCharacters = [
@@ -62,14 +62,14 @@ export default function Characters() {
 
   return (
     <section className="flex flex-col h-full bg-gradient-to-br relative from-red-500 via-yellow-300 to-pink-800">
-      <div className="fixed z-0 flex py-8 ml-20">
+      <div className="z-0 flex py-8 ml-20 fixed">
         <img
           src="/images/ROGER.png"
           alt="Rei dos Piratas"
           className="w-auto h-[90vh] ml-20 object-cover"
         />
       </div>
-        <h1
+      <h1
           style={{ fontFamily: "Times New Roman", fontWeight: "bold" }}
           className="text-white text-4xl mt-10 absolute right-20"
         >

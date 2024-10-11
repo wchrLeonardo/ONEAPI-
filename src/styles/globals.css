@@ -34,5 +34,21 @@ body {
   .text-name{
     @apply text-lg font-bold;
   }
+}
 
+
+@font-face {
+  font-family: 'Nico Moji';
+  src: local('Nico Moji'), url('../pages/fonts/NicoMoji-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* CSS para ocultar a barra de rolagem */
+.custom-scroll {
+  scrollbar-width: none; /* Para Firefox */
+}
+
+.custom-scroll::-webkit-scrollbar {
+  display: none; /* Para Chrome, Safari e Opera */
 }
