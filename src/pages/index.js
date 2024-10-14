@@ -2,6 +2,8 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import Characters from "@/components/list";
 import Bounties from "@/components/bounties";
+import Footer from "@/components/footer";
+import Increment from "@/components/increment";
 
 
 const geistSans = localFont({
@@ -20,6 +22,8 @@ export default function Home() {
     <div>
       <Characters />
       <Bounties />
+      <Increment/>
+      <Footer name="Leonardo W."/>
     </div>
   );
 }

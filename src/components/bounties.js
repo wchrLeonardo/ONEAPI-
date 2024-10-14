@@ -32,11 +32,11 @@ export default function Bounties() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen relative">
-      <img src="/images/loading.png" alt="Loading" className="w-full h-[100vh] object-cover" />
-      <p className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl font-bold">
-        Carregando...
-      </p>
-    </div>
+        <img src="/images/loading.png" alt="Loading" className="w-full h-[100vh] object-cover" />
+        <p className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl font-bold">
+          Carregando...
+        </p>
+      </div>
     )
   }
 
@@ -58,23 +58,23 @@ export default function Bounties() {
       }
     }
     return "/images/wanted/1.webp";
-  };
+  }
 
   return (
     <section className="flex flex-col h-full bg-gradient-to-br relative from-red-500 via-yellow-300 to-pink-800">
-      <div className="z-0 flex py-8 ml-20 fixed">
+      <div className="z-0 flex py-8 ml-15 absolute">
         <img
           src="/images/ROGER.png"
           alt="Rei dos Piratas"
-          className="w-auto h-[90vh] ml-20 object-cover"
+          className="w-auto h-[100vh] ml-20"
         />
       </div>
       <h1
-          style={{ fontFamily: "Times New Roman", fontWeight: "bold" }}
-          className="text-white text-4xl mt-10 absolute right-20"
-        >
-          PERSONAGENS DE ONE PIECE <br/> COM AS MAIORES RECOMPENSAS
-        </h1>
+        style={{ fontFamily: "Times New Roman", fontWeight: "bold" }}
+        className="text-white text-4xl mt-10 absolute right-20"
+      >
+        PERSONAGENS DE ONE PIECE <br /> COM AS MAIORES RECOMPENSAS
+      </h1>
       <div className="mt-[12%] top-10 w-full flex flex-wrap justify-center z-10">
         {orderedCharacters.length > 0 ? (
           orderedCharacters.map((character) => (
@@ -99,3 +99,4 @@ export default function Bounties() {
     </section>
   );
 }
+

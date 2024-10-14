@@ -3,24 +3,26 @@ import { useState, useEffect } from 'react';
 export default function Characters() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para o termo de pesquisa
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const [name, setName] = useState('')
+  const [showModal, setShowModal] = useState(true)
 
   useEffect(() => {
-    const url = 'https://api.api-onepiece.com/v2/characters/en';
+    const url = 'https://api.api-onepiece.com/v2/characters/en'
 
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url)
         if (!response.ok) {
-          throw new Error('Erro na requisição');
+          throw new Error('Erro na requisição')
         }
         const result = await response.json();
-        console.log(result); // Para verificar a resposta da API
-        setCharacters(result); // Armazenando os dados diretamente, já que é um array
+        console.log(result) // Para verificar a resposta da API
+        setCharacters(result) // Armazenando os dados diretamente, já que é um array
         setLoading(false)
       } catch (error) {
         console.error('Erro ao buscar os dados:', error)
-        setLoading(false);
+        setLoading(false)
       }
     }
 
@@ -30,7 +32,12 @@ export default function Characters() {
   // Função para filtrar personagens pelo nome
   const filteredCharacters = characters.filter(character =>
     character.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  )
+
+  const handleModalSubmit = (e) => {
+    e.preventDefault();
+    setShowModal(false); // Fecha o modal após o envio
+  };
 
   if (loading) {
     return (
@@ -45,16 +52,41 @@ export default function Characters() {
 
   return (
     <section className="bg-[url('/images/index.png')] bg-cover h-[100vh]">
+
+{showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-md">
+            <h2 className="text-lg font-bold mb-4">Insira seu nome</h2>
+            <form onSubmit={handleModalSubmit}>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="border rounded p-2 w-full"
+                placeholder="Digite seu nome"
+              />
+              <button type="submit" className="mt-4 bg-blue-500 text-white rounded px-4 py-2">
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+
+
       <div className="flex items-center justify-between">
   <img src="/images/logo.png" alt="Logo" className="ml-5 mt-10" />
   
+    <p style={{ fontFamily: 'Nico Moji' }} className='text-white text-2xl'>Bem vindo {name || 'Usuário'}</p>
+
   <div className="relative w-3/4 max-w-sm mr-5">
     <input
       type="text"
       placeholder="Pesquisar personagens..."
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o estado com o valor do input
-      className="w-full bg-[#BB5346] text-white rounded-full p-2 pl-10 mb-4 focus:outline-none" // Adiciona padding-left para espaço do ícone
+      className="w-full bg-[#BB5346] text-white rounded-full p-2 pl-10 mb-4 focus:outline-none" 
     />
     <img
       src="/images/lupa.png"
